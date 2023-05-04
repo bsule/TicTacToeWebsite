@@ -2,6 +2,8 @@
 var userInput=localStorage.getItem("range");
 var color;
 var start;
+var clickedId;
+var board = [['','',''],['','',''],['','','']];
 
 if(userInput!=1 && userInput!=2 && userInput!=3){
     userInput=1;
@@ -33,7 +35,7 @@ else{
     document.getElementById("start").innerHTML="Computer Starts";
 }
 
-var board = [['','',''],['','',''],['','','']];
+
 
 // random computer square
 function computerStart(){
@@ -80,8 +82,42 @@ if(startValue==1){
     }
 }
 
+function reply(id){
+    clickedId=id; // sets clicked id to the id of whatever button was clicked
+}
 
-$("td").click(function(){
-    $(this).find('button').css('background-color',color);
-    console.log(userInput);
-})
+function userTurn(){
+    $("td").click(function(){
+        if(clickedId=="one" && board[0][0]==''){
+            $(this).find('button').css("background-color",color);
+        }
+        else if(clickedId=="two" && board[0][1]==''){
+            $(this).find('button').css("background-color",color);
+        }
+        else if(clickedId=="three" && board[0][2]==''){
+            $(this).find('button').css("background-color",color);
+        }
+        else if(clickedId=="four" && board[1][0]==''){
+            $(this).find('button').css("background-color",color);
+        }
+        else if(clickedId=="five" && board[1][1]==''){
+            $(this).find('button').css("background-color",color);
+        }
+        else if(clickedId=="six" && board[1][2]==''){
+            $(this).find('button').css("background-color",color);
+        }
+        else if(clickedId=="seven" && board[2][0]==''){
+            $(this).find('button').css("background-color",color);
+        }
+        else if(clickedId=="eight" && board[2][1]==''){
+            $(this).find('button').css("background-color",color);
+        }
+        else if(clickedId=="two" && board[2][2]==''){
+            $(this).find('button').css("background-color",color);
+        }
+    })
+    
+}
+
+userTurn();
+
