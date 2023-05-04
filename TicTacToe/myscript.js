@@ -35,6 +35,42 @@ else{
 
 var board = [['','',''],['','',''],['','','']];
 
+// random computer square
+function computerStart(){
+    return Math.floor(Math.random()*9)+1;
+}
+
+if(startValue==1){
+    var computerSquare = computerStart();
+    if(computerSquare==1){
+        $("#one").find('button').css("background-color", "black");
+    }
+    else if(computerSquare==2){
+        $("#two").find('button').css("background-color", "black");
+    }
+    else if(computerSquare==3){
+        $("#three").find('button').css("background-color", "black");
+    }
+    else if(computerSquare==4){
+        $("#four").find('button').css("background-color", "black");
+    }
+    else if(computerSquare==5){
+        $("#five").find('button').css("background-color", "black");
+    }
+    else if(computerSquare==6){
+        $("#six").find('button').css("background-color", "black");
+    }
+    else if(computerSquare==7){
+        $("#seven").find('button').css("background-color", "black");
+    }
+    else if(computerSquare==8){
+        $("#eight").find('button').css("background-color", "black");
+    }
+    else if(computerSquare==9){
+        $("#nine").find('button').css("background-color", "black");
+    }
+}
+
 $("td").click(function(){
     $(this).find('button').css('background-color',color);
     console.log(userInput);
