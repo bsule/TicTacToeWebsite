@@ -38,48 +38,15 @@ else{
 
 
 // random computer square
-function computerStart(){
+function computerRandom(){
     return Math.floor(Math.random()*9)+1;
 }
+
+
+
 // if computer has first move
 if(startValue==1){
-    var computerSquare = computerStart();
-    if(computerSquare==1){
-        $("#one").find('button').css("background-color", "black");
-        board[0][0]=1;
-    }
-    else if(computerSquare==2){
-        $("#two").find('button').css("background-color", "black");
-        board[0][1]=1;
-    }
-    else if(computerSquare==3){
-        $("#three").find('button').css("background-color", "black");
-        board[0][2]=1;
-    }
-    else if(computerSquare==4){
-        $("#four").find('button').css("background-color", "black");
-        board[1][0]=1;
-    }
-    else if(computerSquare==5){
-        $("#five").find('button').css("background-color", "black");
-        board[1][1]=1;
-    }
-    else if(computerSquare==6){
-        $("#six").find('button').css("background-color", "black");
-        board[1][2]=1;
-    }
-    else if(computerSquare==7){
-        $("#seven").find('button').css("background-color", "black");
-        board[2][0]=1;
-    }
-    else if(computerSquare==8){
-        $("#eight").find('button').css("background-color", "black");
-        board[2][1]=1;
-    }
-    else if(computerSquare==9){
-        $("#nine").find('button').css("background-color", "black");
-        board[2][2]=1;
-    }
+    computerRandomMove();
 }
 
 function reply(id){
@@ -148,11 +115,60 @@ function userTurn(){
 
 function computerMove(){
     
-   
+   // computer win
    
 
-    if(checkWin()){
-        console.log("WON")
+
+    // computer block
+
+
+
+
+    if(checkWin()==1){
+        console.log("COMPUTER WON")
+    }
+    else if(checkWin()==0){
+        console.log("USER WON")
+    }
+}
+
+function computerRandomMove(){
+    var computerSquare = computerRandom();
+    if(computerSquare==1 && board[0][0]==''){
+        $("#one").find('button').css("background-color", "black");
+        board[0][0]=1;
+    }
+    else if(computerSquare==2 && board[0][1]==''){
+        $("#two").find('button').css("background-color", "black");
+        board[0][1]=1;
+    }
+    else if(computerSquare==3 && board[0][2]==''){
+        $("#three").find('button').css("background-color", "black");
+        board[0][2]=1;
+    }
+    else if(computerSquare==4 && board[1][0]==''){
+        $("#four").find('button').css("background-color", "black");
+        board[1][0]=1;
+    }
+    else if(computerSquare==5 && board[1][1]==''){
+        $("#five").find('button').css("background-color", "black");
+        board[1][1]=1;
+    }
+    else if(computerSquare==6 && board[1][2]==''){
+        $("#six").find('button').css("background-color", "black");
+        board[1][2]=1;
+    }
+    else if(computerSquare==7 && board[2][0]==''){
+        $("#seven").find('button').css("background-color", "black");
+        board[2][0]=1;
+    }
+    else if(computerSquare==8 && board[2][1]==''){
+        $("#eight").find('button').css("background-color", "black");
+        board[2][1]=1;
+    }
+    else if(computerSquare==9 && board[2][2]==''){
+        $("#nine").find('button').css("background-color", "black");
+        board[2][2]=1;
     }
 }
 
@@ -165,6 +181,7 @@ function checkWin(){
 
     for(var i=0;i<3;i++){
         for(var j=0;j<3;j++){
+
             // Horizontal wins
             if(board[i][j]==''){
                 compWinHor=false; // computer is 1 on board array
@@ -187,10 +204,10 @@ function checkWin(){
             
             else if(j==2){
                 if(board[i][j]=='1' && compWinHor==true){
-                    return true;
+                    return 1;
                 }
                 else if(board[i][j]=='0' && userWinHor==true){
-                    return true;
+                    return 0;
                 }
             }
 
@@ -216,27 +233,28 @@ function checkWin(){
 
             else if(j==2){
                 if(board[j][i]=='0' && userWinVert==true){
-                    return true;
+                    return 0;
                 }
                 else if(board[j][i]=='1' && compWinVert==true){
-                    return true;
+                    return 1;
                 }
             }
         }
     }
     // Diagonal wins
     if(board[0][0]=='0' && board[1][1]=='0' && board[2][2]=='0'){
-        return true;
+        return 0;
     }
     else if(board[0][0]=='1' && board[1][1]=='1' && board[2][2]=='1'){
-        return true;
+        return 1;
     }
     else if(board[0][2]=='0' && board[1][1]=='0' && board[2][0]=='0'){
-        return true;
+        return 0;
     }
     else if(board[0][2]=='1' && board[1][1]=='1' && board[2][0]=='1'){
-        return true;
+        return 1;
     }
+    return 2;
     
 }
 
