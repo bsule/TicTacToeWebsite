@@ -149,103 +149,95 @@ function userTurn(){
 function computerMove(){
     
    
-    $("#five").find('button').css("background-color", "black");
-    console.log("hello")
+   
 
-    checkWin();
+    if(checkWin()){
+        console.log("WON")
+    }
 }
 
 function checkWin(){
-    var computerWinning = false;
-    var userWinning = false;
-    var won=2;
-    for(var i=0;i<3;i++){ // horizontal win
+    var compWinHor=false;
+    var userWinHor=false;
+
+    var compWinVert=false;
+    var userWinVert=false;
+
+    for(var i=0;i<3;i++){
         for(var j=0;j<3;j++){
-            if(j==0 && board[i][j]=='0'){
-                userWinning=true;
+            // Horizontal wins
+            if(board[i][j]==''){
+                compWinHor=false; // computer is 1 on board array
+                userWinHor=false; // user is 0 on board array
             }
-            else if(j==0 && board[i][j]=='1'){
-                computerWinning = true;
-            }
-            else if((j==1 || j==2) && board[i][j]=='0'){
-                if(userWinning==true && j==1){
-                    continue;
+
+            else if(j==0){
+                if(board[i][j]=='0'){
+                    userWinHor=true;
                 }
-                else if(userWinning==true && j==2){
-                    won=0;
-                    console.log("won");
-                }
-                else if(userwinning==false){
-                    userWinning=false;
-                    computerWinning = false;
-                    break;
+                else{
+                    compWinHor=true;
                 }
             }
-            else if((j==1 || j==2) && board[i][j]=='1'){
-                if(computerWinning==true && j==1){
-                    continue;
+
+            else if((j==1||j==2) && (compWinHor==false && userWinHor==false) || (board[i][j]=='0' && userWinHor==false) || (board[i][j]=='1' && compWinHor==false)){
+                compWinHor=false;
+                userWinHor=false;
+            }
+            
+            else if(j==2){
+                if(board[i][j]=='1' && compWinHor==true){
+                    return true;
                 }
-                else if(computerWinning==true && j==2){
-                    won=1;
-                }
-                else if(computerWinning==false){
-                    userWinning=false;
-                    computerWinning = false;
-                    break;
+                else if(board[i][j]=='0' && userWinHor==true){
+                    return true;
                 }
             }
-            else{
-                userWinning=false;
-                computerWinning = false;
-                break;
+
+            // Vertical wins
+            if(board[j][i]==''){
+                compWinVert=false;
+                userWinVert=false;
+            }
+
+            else if(j==0){
+                if(board[j][i]=='0'){
+                    userWinVert=true;
+                }
+                else{
+                    compWinVert=true;
+                }
+            }
+
+            else if((j==1||j==2) && (compWinVert==false && userWinVert==false) || (board[j][i]=='0' && userWinVert==false) || (board[j][i]=='1' && compWinVert==false)){
+                compWinVert=false;
+                userWinVert=false;
+            }
+
+            else if(j==2){
+                if(board[j][i]=='0' && userWinVert==true){
+                    return true;
+                }
+                else if(board[j][i]=='1' && compWinVert==true){
+                    return true;
+                }
             }
         }
     }
-
-    for(var i=0;i<3;i++){ // vertical win
-        for(var j=0;j<3;j++){
-            if(j==0 && board[j][i]=='0'){
-                userWinning=true;
-            }
-            else if(j==0 && board[j][i]=='1'){
-                computerWinning = true;
-            }
-            else if((j==1 || j==2) && board[j][i]=='0'){
-                if(userWinning==true && j==1){
-                    continue;
-                }
-                else if(userWinning==true && j==2){
-                    won=0;
-                    console.log("won");
-                }
-                else if(userwinning==false){
-                    userWinning=false;
-                    computerWinning = false;
-                    break;
-                }
-            }
-            else if((j==1 || j==2) && board[j][i]=='1'){
-                if(computerWinning==true && j==1){
-                    continue;
-                }
-                else if(computerWinning==true && j==2){
-                    won=1;
-                }
-                else if(computerWinning==false){
-                    userWinning=false;
-                    computerWinning = false;
-                    break;
-                }
-            }
-            else{
-                userWinning=false;
-                computerWinning = false;
-                break;
-            }
-        }
+    // Diagonal wins
+    if(board[0][0]=='0' && board[1][1]=='0' && board[2][2]=='0'){
+        return true;
     }
-
-    return won;
+    else if(board[0][0]=='1' && board[1][1]=='1' && board[2][2]=='1'){
+        return true;
+    }
+    else if(board[0][2]=='0' && board[1][1]=='0' && board[2][0]=='0'){
+        return true;
+    }
+    else if(board[0][2]=='1' && board[1][1]=='1' && board[2][0]=='1'){
+        return true;
+    }
+    
 }
 
 userTurn();
