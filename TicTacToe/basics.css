@@ -1,0 +1,35 @@
+
+body{
+    background-color: RGB(136, 176, 75);
+}
+
+
+
+.userColor button{
+    background-color: red;
+}
+
+.board button{
+    width: 100px;
+    height: 100px;
+    margin-left: 3px;
+}
+
+
+/* home css */
+#homecont{
+    margin-top: 40px;
+}
+
+p{
+    margin-bottom: 1px;
+    font-size: 12px;
+}
+
+#submit{
+    margin-top: 5px;
+    background-color: black;
+    border-color: black;
+    color: white;
+    width: 100px;
+}
