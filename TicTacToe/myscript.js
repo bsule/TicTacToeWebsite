@@ -44,32 +44,42 @@ if(startValue==1){
     var computerSquare = computerStart();
     if(computerSquare==1){
         $("#one").find('button').css("background-color", "black");
+        board[0][0]=1;
     }
     else if(computerSquare==2){
         $("#two").find('button').css("background-color", "black");
+        board[0][1]=1;
     }
     else if(computerSquare==3){
         $("#three").find('button').css("background-color", "black");
+        board[0][2]=1;
     }
     else if(computerSquare==4){
         $("#four").find('button').css("background-color", "black");
+        board[1][0]=1;
     }
     else if(computerSquare==5){
         $("#five").find('button').css("background-color", "black");
+        board[1][1]=1;
     }
     else if(computerSquare==6){
         $("#six").find('button').css("background-color", "black");
+        board[1][2]=1;
     }
     else if(computerSquare==7){
         $("#seven").find('button').css("background-color", "black");
+        board[2][0]=1;
     }
     else if(computerSquare==8){
         $("#eight").find('button').css("background-color", "black");
+        board[2][1]=1;
     }
     else if(computerSquare==9){
         $("#nine").find('button').css("background-color", "black");
+        board[2][2]=1;
     }
 }
+
 
 $("td").click(function(){
     $(this).find('button').css('background-color',color);
