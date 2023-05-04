@@ -42,8 +42,6 @@ function computerRandom(){
     return Math.floor(Math.random()*9)+1;
 }
 
-
-
 // if computer has first move
 if(startValue==1){
     computerRandomMove();
@@ -114,13 +112,130 @@ function userTurn(){
 }
 
 function computerMove(){
+    var completedMove=false;
     
    // computer win
-   
+    for(var i = 0; i<3;i++){
+        if(board[i][0]=='1' && board[i][1]=='1' && board[i][2]!='0' && !completedMove){
+            if(i==0){
+                $('#three').find('button').css('background-color',black);
+                completedMove=true;
+            }
+            else if(i==1){
+                $('#six').find('button').css('background-color',black);
+                completedMove=true;
+            }
+            else if(i==2){
+                $('#nine').find('button').css('background-color',black);
+                completedMove=true;
+            } 
+        }
+        else if(board[i][0]=='1' && board[i][2]=='1' && board[i][1]!='0' && !completedMove){
+            if(i==0){
+                $('#two').find('button').css('background-color',black);
+                completedMove=true;
+            }
+            else if(i==1){
+                $('#five').find('button').css('background-color',black);
+                completedMove=true;
+            }
+            else if(i==2){
+                $('#eight').find('button').css('background-color',black);
+                completedMove=true;
+            } 
+        }
+        else if(board[i][1]=='1' && board[i][2]=='1' && board[i][0]!='0' && !completedMove){
+            if(i==0){
+                $('#one').find('button').css('background-color',black);
+                completedMove=true;
+            }
+            else if(i==1){
+                $('#four').find('button').css('background-color',black);
+                completedMove=true;
+            }
+            else if(i==2){
+                $('#seven').find('button').css('background-color',black);
+                completedMove=true;
+            } 
+        }
+        else if(board[0][i]=='1' && board[1][i]=='1' && board[2][i]!='0' && !completedMove){
+            if(i==0){
+                $('#seven').find('button').css('background-color',black);
+                completedMove=true;
+            }
+            else if(i==1){
+                $('#eight').find('button').css('background-color',black);
+                completedMove=true;
+            }
+            else if(i==2){
+                $('#nine').find('button').css('background-color',black);
+                completedMove=true;
+            } 
+        }
+        else if(board[0][i]=='1' && board[2][i]=='1' && board[1][i]!='0' && !completedMove){
+            if(i==0){
+                $('#four').find('button').css('background-color',black);
+                completedMove=true;
+            }
+            else if(i==1){
+                $('#five').find('button').css('background-color',black);
+                completedMove=true;
+            }
+            else if(i==2){
+                $('#six').find('button').css('background-color',black);
+                completedMove=true;
+            } 
+        }
+        else if(board[1][i]=='1' && board[2][i]=='1' && board[0][i]!='0' && !completedMove){
+            if(i==0){
+                $('#one').find('button').css('background-color',black);
+                completedMove=true;
+            }
+            else if(i==1){
+                $('#two').find('button').css('background-color',black);
+                completedMove=true;
+            }
+            else if(i==2){
+                $('#three').find('button').css('background-color',black);
+                completedMove=true;
+            } 
+        } 
+    }
+    // Diagonal Win
+    if(board[0][0]=='1' && board[1][1]=='1' && board[2][2]!='0' && !completedMove){
+        $('#nine').find('button').css('background-color',black);
+        completedMove=true;
+    }
+    else if(board[0][0]=='1' && board[2][2]=='1' && board[1][1]!='0' && !completedMove){
+        $('#five').find('button').css('background-color',black);
+        completedMove=true;
+    }
+    else if(board[2][2]=='1' && board[1][1]=='1' && board[2][2]!='0' && !completedMove){
+        $('#one').find('button').css('background-color',black);
+        completedMove=true;
+    }
+    else if(board[0][2]=='1' && board[1][1]=='1' && board[2][0]!='0' && !completedMove){
+        $('#seven').find('button').css('background-color',black);
+        completedMove=true;
+    }
+    else if(board[0][2]=='1' && board[2][0]=='1' && board[1][1]!='0' && !completedMove){
+        $('#five').find('button').css('background-color',black);
+        completedMove=true;
+    }
+    else if(board[2][0]=='1' && board[1][1]=='1' && board[0][2]!='0' && !completedMove){
+        $('#three').find('button').css('background-color',black);
+        completedMove=true;
+    }
 
 
     // computer block
-
+    if(!completedMove){
+        for(var i=0; i<3;i++){
+            if(board[i][0]=='0' && board[i][1]=='0' && board[i][2]!='1' && !completedMove){
+                board[i][2]='1';
+            }
+        }
+    }
 
 
 
