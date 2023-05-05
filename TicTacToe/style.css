@@ -28,6 +28,10 @@ body{
     color: white;
 }
 
+#titleOfGame{
+    margin-top: 40px;
+}
+
 /* home css */
 #homecont{
     margin-top: 40px;
