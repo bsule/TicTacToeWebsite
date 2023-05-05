@@ -1,6 +1,8 @@
 
 body{
-    background-color: RGB(136, 176, 75);
+    background-color: rgb(71, 177, 190);
+    font-family: 'Fira Sans', sans-serif;
+
 }
 
 .board button{
@@ -10,6 +12,17 @@ body{
     background-color: rgb(176, 175, 175);
 }
 
+#newGame.hide{
+    display:none;
+}
+
+#newGame{
+    display:none;
+    margin-top: 5px;
+    width: 100px;
+    background-color: black;
+    color: white;
+}
 
 /* home css */
 #homecont{

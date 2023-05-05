@@ -1,9 +1,14 @@
 
+// random is not fixed
+// stop when games over
+
 var userInput=localStorage.getItem("range");
 var color;
 var start;
 var clickedId;
 var board = [['','',''],['','',''],['','','']];
+var gameover=checkWin();
+var newGameBtn = document.querySelector('#newGame');
 
 if(userInput!=1 && userInput!=2 && userInput!=3){
     userInput=1;
@@ -52,239 +57,379 @@ function reply(id){
 }
 
 function userTurn(){
+    var stopWinVariable=false;
     $("td").click(function(){
-        if(clickedId=="one" && board[0][0]==''){
+        if(clickedId=="one" && board[0][0]=='' && stopAtWin()==false){
             $(this).find('button').css("background-color",color);
             board[0][0]='0';
-            checkWin();
-            computerMove();
+            stopWinVariable = stopAtWin();
+            if(!stopWinVariable){
+                computerMove();
+            }
         }
-        else if(clickedId=="two" && board[0][1]==''){
+        else if(clickedId=="two" && board[0][1]=='' && stopAtWin()==false){
             $(this).find('button').css("background-color",color);
             board[0][1]='0';
-            checkWin();
-            computerMove();
+            stopWinVariable = stopAtWin();
+            if(!stopWinVariable){
+                computerMove();
+            }
         }
-        else if(clickedId=="three" && board[0][2]==''){
+        else if(clickedId=="three" && board[0][2]=='' && stopAtWin()==false){
             $(this).find('button').css("background-color",color);
             board[0][2]='0';
-            checkWin();
-            computerMove();
+            stopWinVariable = stopAtWin();
+            if(!stopWinVariable){
+                computerMove();
+            }
         }
-        else if(clickedId=="four" && board[1][0]==''){
+        else if(clickedId=="four" && board[1][0]=='' && stopAtWin()==false){
             $(this).find('button').css("background-color",color);
             board[1][0]='0';
-            checkWin();
-            computerMove();
+            stopWinVariable = stopAtWin();
+            if(!stopWinVariable){
+                computerMove();
+            }
         }
-        else if(clickedId=="five" && board[1][1]==''){
+        else if(clickedId=="five" && board[1][1]=='' && stopAtWin()==false){
             $(this).find('button').css("background-color",color);
             board[1][1]='0';
-            checkWin();
-            computerMove();
+            stopWinVariable = stopAtWin();
+            if(!stopWinVariable){
+                computerMove();
+            }
         }
-        else if(clickedId=="six" && board[1][2]==''){
+        else if(clickedId=="six" && board[1][2]=='' && stopAtWin()==false){
             $(this).find('button').css("background-color",color);
             board[1][2]='0';
-            checkWin();
-            computerMove();
+            stopWinVariable = stopAtWin();
+            if(!stopWinVariable){
+                computerMove();
+            }
         }
-        else if(clickedId=="seven" && board[2][0]==''){
+        else if(clickedId=="seven" && board[2][0]=='' && stopAtWin()==false){
             $(this).find('button').css("background-color",color);
             board[2][0]='0';
-            checkWin();
-            computerMove();
+            stopWinVariable = stopAtWin();
+            if(!stopWinVariable){
+                computerMove();
+            }
         }
-        else if(clickedId=="eight" && board[2][1]==''){
+        else if(clickedId=="eight" && board[2][1]=='' && stopAtWin()==false){
             $(this).find('button').css("background-color",color);
             board[2][1]='0';
-            checkWin();
-            computerMove();
+            stopWinVariable = stopAtWin();
+            if(!stopWinVariable){
+                computerMove();
+            }
+            
         }
-        else if(clickedId=="nine" && board[2][2]==''){
+        else if(clickedId=="nine" && board[2][2]=='' && stopAtWin()==false){
             $(this).find('button').css("background-color",color);
             board[2][2]='0';
-            checkWin();
-            computerMove();
+            stopWinVariable = stopAtWin();
+            if(!stopWinVariable){
+                computerMove();
+            }
         }
     })
+
     
 }
 
+
 function computerMove(){
     var completedMove=false;
-    
    // computer win
     for(var i = 0; i<3;i++){
         if(board[i][0]=='1' && board[i][1]=='1' && board[i][2]!='0' && !completedMove){
+            board[i][2]='1';
             if(i==0){
-                $('#three').find('button').css('background-color',black);
+                $('#three').find('button').css('background-color','black');
                 completedMove=true;
             }
             else if(i==1){
-                $('#six').find('button').css('background-color',black);
+                $('#six').find('button').css('background-color','black');
                 completedMove=true;
             }
             else if(i==2){
-                $('#nine').find('button').css('background-color',black);
+                $('#nine').find('button').css('background-color','black');
                 completedMove=true;
             } 
         }
         else if(board[i][0]=='1' && board[i][2]=='1' && board[i][1]!='0' && !completedMove){
+            board[i][1]='1';
             if(i==0){
-                $('#two').find('button').css('background-color',black);
+                $('#two').find('button').css('background-color','black');
                 completedMove=true;
             }
             else if(i==1){
-                $('#five').find('button').css('background-color',black);
+                $('#five').find('button').css('background-color','black');
                 completedMove=true;
             }
             else if(i==2){
-                $('#eight').find('button').css('background-color',black);
+                $('#eight').find('button').css('background-color','black');
                 completedMove=true;
             } 
         }
         else if(board[i][1]=='1' && board[i][2]=='1' && board[i][0]!='0' && !completedMove){
+            board[i][0]='1';
             if(i==0){
-                $('#one').find('button').css('background-color',black);
+                $('#one').find('button').css('background-color','black');
                 completedMove=true;
             }
             else if(i==1){
-                $('#four').find('button').css('background-color',black);
+                $('#four').find('button').css('background-color','black');
                 completedMove=true;
             }
             else if(i==2){
-                $('#seven').find('button').css('background-color',black);
+                $('#seven').find('button').css('background-color','black');
                 completedMove=true;
             } 
         }
         else if(board[0][i]=='1' && board[1][i]=='1' && board[2][i]!='0' && !completedMove){
+            board[2][i]='1';
             if(i==0){
-                $('#seven').find('button').css('background-color',black);
+                $('#seven').find('button').css('background-color','black');
                 completedMove=true;
             }
             else if(i==1){
-                $('#eight').find('button').css('background-color',black);
+                $('#eight').find('button').css('background-color','black');
                 completedMove=true;
             }
             else if(i==2){
-                $('#nine').find('button').css('background-color',black);
+                $('#nine').find('button').css('background-color','black');
                 completedMove=true;
             } 
         }
         else if(board[0][i]=='1' && board[2][i]=='1' && board[1][i]!='0' && !completedMove){
+            board[1][i]='1';
             if(i==0){
-                $('#four').find('button').css('background-color',black);
+                $('#four').find('button').css('background-color','black');
                 completedMove=true;
             }
             else if(i==1){
-                $('#five').find('button').css('background-color',black);
+                $('#five').find('button').css('background-color','black');
                 completedMove=true;
             }
             else if(i==2){
-                $('#six').find('button').css('background-color',black);
+                $('#six').find('button').css('background-color','black');
                 completedMove=true;
             } 
         }
         else if(board[1][i]=='1' && board[2][i]=='1' && board[0][i]!='0' && !completedMove){
+            board[0][i]='1';
             if(i==0){
-                $('#one').find('button').css('background-color',black);
+                $('#one').find('button').css('background-color','black');
                 completedMove=true;
             }
             else if(i==1){
-                $('#two').find('button').css('background-color',black);
+                $('#two').find('button').css('background-color','black');
                 completedMove=true;
             }
             else if(i==2){
-                $('#three').find('button').css('background-color',black);
+                $('#three').find('button').css('background-color','black');
                 completedMove=true;
             } 
         } 
     }
     // Diagonal Win
     if(board[0][0]=='1' && board[1][1]=='1' && board[2][2]!='0' && !completedMove){
-        $('#nine').find('button').css('background-color',black);
+        $('#nine').find('button').css('background-color','black');
+        board[2][2]='1';
         completedMove=true;
     }
     else if(board[0][0]=='1' && board[2][2]=='1' && board[1][1]!='0' && !completedMove){
-        $('#five').find('button').css('background-color',black);
+        $('#five').find('button').css('background-color','black');
+        board[1][1]='1';
         completedMove=true;
     }
-    else if(board[2][2]=='1' && board[1][1]=='1' && board[2][2]!='0' && !completedMove){
-        $('#one').find('button').css('background-color',black);
+    else if(board[2][2]=='1' && board[1][1]=='1' && board[0][0]!='0' && !completedMove){
+        $('#one').find('button').css('background-color','black');
+        board[0][0]='1';
         completedMove=true;
     }
     else if(board[0][2]=='1' && board[1][1]=='1' && board[2][0]!='0' && !completedMove){
-        $('#seven').find('button').css('background-color',black);
+        $('#seven').find('button').css('background-color','black');
+        board[2][0]='1';
         completedMove=true;
     }
     else if(board[0][2]=='1' && board[2][0]=='1' && board[1][1]!='0' && !completedMove){
-        $('#five').find('button').css('background-color',black);
+        $('#five').find('button').css('background-color','black');
+        board[1][1]='1';
         completedMove=true;
     }
     else if(board[2][0]=='1' && board[1][1]=='1' && board[0][2]!='0' && !completedMove){
-        $('#three').find('button').css('background-color',black);
+        $('#three').find('button').css('background-color','black');
+        board[0][2]='1';
+        completedMove=true;
+    }
+
+    if(!completedMove){
+    // computer block
+    for(var i=0; i<3;i++){
+        if(board[i][0]=='0' && board[i][1]=='0' && board[i][2]!='1' && !completedMove){
+            board[i][2]='1';
+            if(i==0){
+                $('#three').find('button').css('background-color','black');
+                completedMove=true;
+            }
+            else if(i==1){
+                $('#six').find('button').css('background-color','black');
+                completedMove=true;
+            }
+            else if(i==2){
+                $('#nine').find('button').css('background-color','black');
+                completedMove=true;
+            }
+        }
+        else if(board[i][0]=='0' && board[i][2]=='0' && board[i][1]!='1' && !completedMove){
+            board[i][1]='1';
+            if(i==0){
+                $('#two').find('button').css('background-color','black');
+                completedMove=true;
+            }
+            else if(i==1){
+                $('#five').find('button').css('background-color','black');
+                completedMove=true;
+            }
+            else if(i==2){
+                $('#eight').find('button').css('background-color','black');
+                completedMove=true;
+            }
+        }
+        else if(board[i][1]=='0' && board[i][2]=='0' && board[i][0]!='1' && !completedMove){
+            board[i][0]='1';
+            if(i==0){
+                $('#one').find('button').css('background-color','black');
+                completedMove=true;
+            }
+            else if(i==1){
+                $('#four').find('button').css('background-color','black');
+                completedMove=true;
+            }
+            else if(i==2){
+                $('#seven').find('button').css('background-color','black');
+                completedMove=true;
+            } 
+        }
+        else if(board[0][i]=='0' && board[1][i]=='0' && board[2][i]!='1' && !completedMove){
+            board[2][i]='1';
+            if(i==0){
+                $('#seven').find('button').css('background-color','black');
+                completedMove=true;
+            }
+            else if(i==1){
+                $('#eight').find('button').css('background-color','black');
+                completedMove=true;
+            }
+            else if(i==2){
+                $('#nine').find('button').css('background-color','black');
+                completedMove=true;
+            } 
+        }
+        else if(board[0][i]=='0' && board[2][i]=='0' && board[1][i]!='1' && !completedMove){
+            board[1][i]='1';
+            if(i==0){
+                $('#four').find('button').css('background-color','black');
+                completedMove=true;
+            }
+            else if(i==1){
+                $('#five').find('button').css('background-color','black');
+                completedMove=true;
+            }
+            else if(i==2){
+                $('#six').find('button').css('background-color','black');
+                completedMove=true;
+            } 
+        }
+        else if(board[1][i]=='0' && board[2][i]=='0' && board[0][i]!='1' && !completedMove){
+            board[0][i]='1';
+            if(i==0){
+                $('#one').find('button').css('background-color','black');
+                completedMove=true;
+            }
+            else if(i==1){
+                $('#two').find('button').css('background-color','black');
+                completedMove=true;
+            }
+            else if(i==2){
+                $('#three').find('button').css('background-color','black');
+                completedMove=true;
+            } 
+        }
+    }
+    if(board[0][0]=='0' && board[1][1]=='0' && board[2][2]!='1' && !completedMove){
+        $('#nine').find('button').css('background-color','black');
+        board[2][2]='1';
+        completedMove=true;
+    }
+    else if(board[0][0]=='0' && board[2][2]=='0' && board[1][1]!='1' && !completedMove){
+        $('#five').find('button').css('background-color','black');
+        board[1][1]='1';
+        completedMove=true;
+    }
+    else if(board[2][2]=='0' && board[1][1]=='0' && board[0][0]!='1' && !completedMove){
+        $('#one').find('button').css('background-color','black');
+        board[0][0]='1';
+        completedMove=true;
+    }
+    else if(board[0][2]=='0' && board[1][1]=='0' && board[2][0]!='1' && !completedMove){
+        $('#seven').find('button').css('background-color','black');
+        board[2][0]='1';
+        completedMove=true;
+    }
+    else if(board[0][2]=='0' && board[2][0]=='0' && board[1][1]!='1' && !completedMove){
+        $('#five').find('button').css('background-color','black');
+        board[1][1]='1';
+        completedMove=true;
+    }
+    else if(board[2][0]=='0' && board[1][1]=='0' && board[0][2]!='1' && !completedMove){
+        $('#three').find('button').css('background-color','black');
+        board[0][2]='1';
+        completedMove=true;
+    }
+    }
+
+    if(!completedMove){
+        computerRandomMove();
         completedMove=true;
     }
 
 
-    // computer block
-    if(!completedMove){
-        for(var i=0; i<3;i++){
-            if(board[i][0]=='0' && board[i][1]=='0' && board[i][2]!='1' && !completedMove){
-                board[i][2]='1';
+    stopAtWin();
+}
+
+function noMoreSquares(){
+    for(var i = 0; i<3;i++){
+        for(var j = 0; j<3;j++){
+            if(board[i][j]==''){
+                return false;
             }
         }
     }
-
-
-
-    if(checkWin()==1){
-        console.log("COMPUTER WON")
-    }
-    else if(checkWin()==0){
-        console.log("USER WON")
-    }
+    return true;
 }
 
-function computerRandomMove(){
-    var computerSquare = computerRandom();
-    if(computerSquare==1 && board[0][0]==''){
-        $("#one").find('button').css("background-color", "black");
-        board[0][0]=1;
+
+
+function stopAtWin(){
+    if(checkWin()==1){
+        document.getElementById("gameisover").innerHTML="Computer Won";
+        newGameBtn.style.display='block';
+        return true;
     }
-    else if(computerSquare==2 && board[0][1]==''){
-        $("#two").find('button').css("background-color", "black");
-        board[0][1]=1;
+    else if(checkWin()==0){
+        document.getElementById("gameisover").innerHTML="User Won";
+        newGameBtn.style.display='block';
+        return true;
     }
-    else if(computerSquare==3 && board[0][2]==''){
-        $("#three").find('button').css("background-color", "black");
-        board[0][2]=1;
+    else if(noMoreSquares()){
+        document.getElementById("gameisover").innerHTML="Draw";
+        newGameBtn.style.display='block';
+        return true;
     }
-    else if(computerSquare==4 && board[1][0]==''){
-        $("#four").find('button').css("background-color", "black");
-        board[1][0]=1;
-    }
-    else if(computerSquare==5 && board[1][1]==''){
-        $("#five").find('button').css("background-color", "black");
-        board[1][1]=1;
-    }
-    else if(computerSquare==6 && board[1][2]==''){
-        $("#six").find('button').css("background-color", "black");
-        board[1][2]=1;
-    }
-    else if(computerSquare==7 && board[2][0]==''){
-        $("#seven").find('button').css("background-color", "black");
-        board[2][0]=1;
-    }
-    else if(computerSquare==8 && board[2][1]==''){
-        $("#eight").find('button').css("background-color", "black");
-        board[2][1]=1;
-    }
-    else if(computerSquare==9 && board[2][2]==''){
-        $("#nine").find('button').css("background-color", "black");
-        board[2][2]=1;
-    }
+    return false;
 }
 
 function checkWin(){
@@ -371,6 +516,62 @@ function checkWin(){
     }
     return 2;
     
+}
+
+function computerRandomMove(){
+    var computerSquare = computerRandom();
+    if(noMoreSquares()){
+        return;
+    }
+    var completed=false;
+    if(computerSquare==1 && board[0][0]==''){
+        $("#one").find('button').css("background-color", "black");
+        board[0][0]=1;
+        completed=true;
+    }
+    else if(computerSquare==2 && board[0][1]==''){
+        $("#two").find('button').css("background-color", "black");
+        board[0][1]=1;
+        completed=true;
+    }
+    else if(computerSquare==3 && board[0][2]==''){
+        $("#three").find('button').css("background-color", "black");
+        board[0][2]=1;
+        completed=true;
+    }
+    else if(computerSquare==4 && board[1][0]==''){
+        $("#four").find('button').css("background-color", "black");
+        board[1][0]=1;
+        completed=true;
+    }
+    else if(computerSquare==5 && board[1][1]==''){
+        $("#five").find('button').css("background-color", "black");
+        board[1][1]=1;
+        completed=true;
+    }
+    else if(computerSquare==6 && board[1][2]==''){
+        $("#six").find('button').css("background-color", "black");
+        board[1][2]=1;
+        completed=true;
+    }
+    else if(computerSquare==7 && board[2][0]==''){
+        $("#seven").find('button').css("background-color", "black");
+        board[2][0]=1;
+        completed=true;
+    }
+    else if(computerSquare==8 && board[2][1]==''){
+        $("#eight").find('button').css("background-color", "black");
+        board[2][1]=1;
+        completed=true;
+    }
+    else if(computerSquare==9 && board[2][2]==''){
+        $("#nine").find('button').css("background-color", "black");
+        board[2][2]=1;
+        completed=true;
+    }
+    if(completed==false){
+        computerRandomMove();
+    }
 }
 
 userTurn();
