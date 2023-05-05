@@ -1,8 +1,12 @@
 
 body{
-    background-color: rgb(71, 177, 190);
+    background-color: #3737a3;
     font-family: 'Fira Sans', sans-serif;
+    color: white;
+}
 
+#start{
+    transition: 1s opacity;
 }
 
 .board button{

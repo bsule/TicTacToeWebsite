@@ -19,12 +19,20 @@ if(userInput==1){
     document.getElementById("topText").innerHTML="You are Red, the Computer is Black";
 }
 else if(userInput==2){
-    color='purple';
-    document.getElementById("topText").innerHTML="You are Purple, the Computer is Black";
+    color='blue';
+    document.getElementById("topText").innerHTML="You are Blue, the Computer is Black";
 }
 else{
     color='white';
     document.getElementById("topText").innerHTML="You are White, the Computer is Black";
+}
+
+window.onload = function(){ // fade out function for You start or computer starts text
+    window.setTimeout(fadeout,4000);
+}
+
+function fadeout(){
+    document.getElementById('start').style.opacity = '0';
 }
 
 function whoStarts(){
