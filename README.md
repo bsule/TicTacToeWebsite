@@ -6,7 +6,7 @@ The user can first choose a color from 3 options and is then taken to another pa
 
 ## Demo
 ### Computer Win
-<img src="https://user-images.githubusercontent.com/84888206/236582206-51fbb099-3a0d-4657-9a39-0a4f6f32a2b8.gif" width=40% height=40% />
+![](https://user-images.githubusercontent.com/84888206/236582206-51fbb099-3a0d-4657-9a39-0a4f6f32a2b8.gif)
 
 ### Draw
 ![](https://user-images.githubusercontent.com/84888206/236583214-f2dba980-65a0-4887-aeef-f0a5f075fde6.gif)
