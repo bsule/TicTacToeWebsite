@@ -1,6 +1,6 @@
 # TicTacToe Website
 ## Project Description
-Personal project using simple HTML, CSS, and Javascript.
+Personal project using simple HTML, CSS, and JavaScript.
 
 The user can first choose a color from 3 options and is then taken to another page where they can play TicTacToe against the computer. The computer will try to win, block the user from winning, or choose a random spot on the board if those are not available. Once the game is complete, it will tell the user if they won, lost, or drew and a play again button will appear if the user wants to continue playing.
 
