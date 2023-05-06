@@ -1,15 +1,16 @@
 
-// random is not fixed
-// stop when games over
-
 var userInput=localStorage.getItem("range");
+
+var board = [['','',''],['','',''],['','','']];
+
 var color;
 var start;
 var clickedId;
-var board = [['','',''],['','',''],['','','']];
+
 var gameover=checkWin();
 var newGameBtn = document.querySelector('#newGame');
 
+// find the number that the user chose and set it to their color
 if(userInput!=1 && userInput!=2 && userInput!=3){
     userInput=1;
 }
@@ -27,13 +28,15 @@ else{
     document.getElementById("topText").innerHTML="You are White, the Computer is Black";
 }
 
-window.onload = function(){ // fade out function for You start or computer starts text
+// fadeout function for You Start or Computer Starts text
+window.onload = function(){ 
     window.setTimeout(fadeout,4000);
 }
 
 function fadeout(){
     document.getElementById('start').style.opacity = '0';
 }
+
 
 function whoStarts(){
     start = Math.floor(Math.random()*2);
@@ -64,6 +67,7 @@ function reply(id){
     clickedId=id; // sets clicked id to the id of whatever button was clicked
 }
 
+// when the user clicks, see if the game is already ended or if the spot is already taken and then allow placement
 function userTurn(){
     var stopWinVariable=false;
     $("td").click(function(){
@@ -145,7 +149,7 @@ function userTurn(){
     
 }
 
-
+// computer first checks if it has a chance to win, then checks if it has a chance to block. if spot is still not chosen, the computer will choose a random square
 function computerMove(){
     var completedMove=false;
    // computer win
@@ -408,6 +412,7 @@ function computerMove(){
     stopAtWin();
 }
 
+// checks if there is no more squares
 function noMoreSquares(){
     for(var i = 0; i<3;i++){
         for(var j = 0; j<3;j++){
@@ -420,7 +425,7 @@ function noMoreSquares(){
 }
 
 
-
+// sees if someone won or if its a draw and ends the game if true
 function stopAtWin(){
     if(checkWin()==1){
         document.getElementById("gameisover").innerHTML="Computer Won";
@@ -440,6 +445,7 @@ function stopAtWin(){
     return false;
 }
 
+// checks if someone won
 function checkWin(){
     var compWinHor=false;
     var userWinHor=false;
