@@ -14,7 +14,6 @@ body{
     height: 100px;
     margin-left: 3px;
     background-color: rgb(146, 146, 146);
-    border-color: #3737a3;
 }
 
 #newGame.hide{
@@ -24,7 +23,7 @@ body{
 #newGame{
     display:none;
     margin-top: 5px;
-    width: 100px;
+    width: 150px;
     background-color: black;
     border-color: black;
     color: white;
@@ -38,10 +37,6 @@ body{
 /* home css */
 #homecont{
     margin-top: 40px;
-}
-
-#range{
-    border-color: #3737a3;
 }
 
 p{
