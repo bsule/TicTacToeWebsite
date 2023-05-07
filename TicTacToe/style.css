@@ -13,7 +13,7 @@ body{
     width: 100px;
     height: 100px;
     margin-left: 3px;
-    background-color: rgb(176, 175, 175);
+    background-color: rgb(146, 146, 146);
 }
 
 #newGame.hide{
@@ -25,7 +25,9 @@ body{
     margin-top: 5px;
     width: 100px;
     background-color: black;
+    border-color: black;
     color: white;
+    font-weight: bold;
 }
 
 #titleOfGame{
@@ -48,4 +50,5 @@ p{
     border-color: black;
     color: white;
     width: 100px;
+    font-weight: bold;
 }
