@@ -14,7 +14,7 @@ body{
     height: 100px;
     margin-left: 3px;
     background-color: rgb(146, 146, 146);
-    border-color: black;
+    border-color: #3737a3;
 }
 
 #newGame.hide{
