@@ -15,7 +15,7 @@ The user can first choose a color from 3 options and is then taken to another pa
 ![](https://user-images.githubusercontent.com/84888206/236583208-3bd3052d-e647-4a7d-b1a0-d5cfb8f68c64.gif)
 
 ### Mobile
-<img src="https://user-images.githubusercontent.com/84888206/236702068-6da40445-3eae-4ba7-8f46-9eac1b8cc9a1.gif" width="300" height="504" >
+<img src="https://user-images.githubusercontent.com/84888206/236703427-4c8bde2d-9739-4b17-8949-33242964c522.gif" width="300" height="487" >
 
 ## Installation
 To get started, click on the green code icon and press "Download ZIP." Once downloaded, extract the file into the location you would like the game. Now open TicTacToe->home->home.html and choose your preferred web browser.
